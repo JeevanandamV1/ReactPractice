@@ -1,41 +1,45 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Code, Cpu, MessageCircle, Notebook, CheckSquare } from "lucide-react";
 import ProjectCard from "../components/ProjectCard";
 import "../styles/components/pages/LandingPage.css";
 
 function LandingPage() {
+  const navigate = useNavigate();
+
   const projects = [
     {
       icon: CheckSquare,
       title: "Todo App",
       description: "Manage your tasks efficiently",
-      onClick: () => (window.location.href = "/"),
+      onClick: () => navigate("/todoApp"),
     },
     {
       icon: Cpu,
       title: "Weather App",
       description: "Real-time weather forecasts",
-      onClick: () => (window.location.href = "/weather-app"),
+      onClick: () => navigate("/weather"),
     },
     {
       icon: Code,
       title: "Expense Tracker",
-      description: "Powerful computational tool",
-      onClick: () => (window.location.href = "/calculator-app"),
+      description: "Track your expenses with ease",
+      onClick: () => navigate("/expensiveTracker"),
     },
     {
       icon: Notebook,
       title: "Multi Step Form",
-      description: "Capture and organize your thoughts",
-      onClick: () => (window.location.href = "/notes-app"),
+      description: "Step-by-step form handling",
+      onClick: () => navigate("/multiStepForm"),
     },
     {
       icon: MessageCircle,
       title: "Ecommerce Product list",
-      description: "Connect and communicate",
-      onClick: () => (window.location.href = "/chat-app"),
+      description: "Browse and shop products",
+      onClick: () => navigate("/Ecommerce"),
     },
   ];
+
   return (
     <div className="landing-page">
       <div className="landing-content">
