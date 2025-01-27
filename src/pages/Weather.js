@@ -1,33 +1,27 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/components/pages/weather.css";
 import getWeatherData from "../Api/WeatherAPi";
 
-const weatherData = {
-  "New York": {
-    temperature: 22,
-    humidity: 65,
-    windSpeed: 12,
-    precipitation: 20,
-  },
-  "Los Angeles": {
-    temperature: 28,
-    humidity: 55,
-    windSpeed: 8,
-    precipitation: 5,
-  },
-  Chicago: {
-    temperature: 18,
-    humidity: 70,
-    windSpeed: 15,
-    precipitation: 35,
-  },
-};
-
 const Weather = () => {
   const [selectedCity, setSelectedCity] = useState("");
+  const [weatherInfo, setWeatherInfo] = useState(null);
+  // const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const cities = Object.keys(weatherData);
+  const cities = ["New York", "Los Angeles", "Chicago"];
+
+  useEffect(() => {
+    if (selectedCity) {
+      setError(null);
+      getWeatherData(selectedCity)
+        .then((data) => {
+          setWeatherInfo(data);
+        })
+        .catch((error) => {
+          setError(error.message);
+        });
+    }
+  }, [selectedCity]);
 
   return (
     <div className="weather-container">
@@ -49,7 +43,9 @@ const Weather = () => {
           </select>
         </div>
 
-        {selectedCity && (
+        {error && <p className="error-message">Error: {error}</p>}
+
+        {weatherInfo ? (
           <table className="weather-table">
             <thead>
               <tr>
@@ -58,23 +54,22 @@ const Weather = () => {
               </tr>
             </thead>
             <tbody>
-              {Object.entries(weatherData[selectedCity]).map(([key, value]) => (
-                <tr key={key}>
-                  <td>{key.replace(/([A-Z])/g, " $1")}</td>
-                  <td className="value-cell">
-                    {value}
-                    {key === "temperature"
-                      ? "°C"
-                      : key === "windSpeed"
-                      ? " km/h"
-                      : key === "precipitation"
-                      ? "%"
-                      : ""}
-                  </td>
-                </tr>
-              ))}
+              <tr>
+                <td>Temperature</td>
+                <td>{weatherInfo.main.temp}°C</td>
+              </tr>
+              <tr>
+                <td>Humidity</td>
+                <td>{weatherInfo.main.humidity}%</td>
+              </tr>
+              <tr>
+                <td>Wind Speed</td>
+                <td>{weatherInfo.wind.speed} km/h</td>
+              </tr>
             </tbody>
           </table>
+        ) : (
+          <text>Get weather reports in anywhere & everywhere</text>
         )}
       </div>
     </div>
