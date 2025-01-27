@@ -1,7 +1,7 @@
 import React from "react";
 import { Code, Cpu, MessageCircle, Notebook, CheckSquare } from "lucide-react";
 import ProjectCard from "../components/ProjectCard";
-import "../styles/components/pages/LandingPage.css";
+import "../styles/pages/LandingPage.css";
 
 function LandingPage() {
   const projects = [
