@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../styles/pages/weather.css";
+import "../styles/components/pages/weather.css";
 import getWeatherData from "../Api/WeatherAPi";
 
 const Weather = () => {
