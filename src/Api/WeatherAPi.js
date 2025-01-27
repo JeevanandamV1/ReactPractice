@@ -5,7 +5,7 @@ export default async function getWeatherData(city) {
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIkey}`
     );
 
-    if (!response.ok) {
+    if (response.ok) {
       console.log(`response status : ${response.status}`);
     } else {
       console.error(`response error : ${response.error}`);
@@ -13,6 +13,7 @@ export default async function getWeatherData(city) {
 
     const data = await response.json();
     console.log(data);
+    return data;
   } catch (error) {
     console.error(`error message : ${error.message}`);
   }
