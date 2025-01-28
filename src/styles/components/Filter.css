@@ -117,18 +117,30 @@
   background: #9ca3af;
 }
 
-.add-to-cart-button {
+.ApplyFilter-button {
   font-family: "Roboto Mono", serif;
   background-color: #2563eb;
   color: white;
   border: none;
-  border-radius: 6px;
+  /* border-radius: 6px; */
   padding: 8px 16px;
   cursor: pointer;
   font-size: 14px;
   transition: background-color 0.2s;
 }
 
-.add-to-cart-button:hover {
+.ApplyFilter-button:hover {
   background-color: #1d4ed8;
+}
+
+.removeFIlter-button {
+  font-family: "Roboto Mono", serif;
+  background-color: rgb(198, 2, 2);
+  color: white;
+  border: none;
+  /* border-radius: 6px; */
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
 }

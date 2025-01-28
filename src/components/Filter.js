@@ -3,7 +3,7 @@ import "../styles/components/Filter.css";
 import { ContextAPI } from "../pages/Ecommerce";
 
 export default function Filter({ min = 0, max = 100 }) {
-  const { handleFilterChange } = useContext(ContextAPI);
+  const { handleFilterChange, handleFilterRemove } = useContext(ContextAPI);
   const [price, setPrice] = useState(max);
   const [selectedBrands, setSelectedBrands] = useState([]);
 
@@ -28,6 +28,12 @@ export default function Filter({ min = 0, max = 100 }) {
 
   const applyFilters = () => {
     handleFilterChange({ price, brands: selectedBrands });
+  };
+
+  const removeFilter = () => {
+    handleFilterRemove();
+    setSelectedBrands([]);
+    // handleFilterChange();
   };
 
   return (
@@ -65,10 +71,14 @@ export default function Filter({ min = 0, max = 100 }) {
           ))}
         </div>
       </div>
-
-      <button className="add-to-cart-button" onClick={applyFilters}>
-        Apply Filters
-      </button>
+      <div>
+        <button className="ApplyFilter-button" onClick={applyFilters}>
+          Apply Filters
+        </button>
+        <button className="removeFIlter-button" onClick={removeFilter}>
+          Reset filter
+        </button>
+      </div>
     </div>
   );
 }
