@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/components/pages/todo.css";
+import "../styles/pages/todo.css";
 import InputField from "../components/InputField";
 import Delete from "../components/DeleteTodoItem";
 import Complete from "../components/Complete";

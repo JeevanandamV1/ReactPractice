@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/components/pages/LandingPage.css";
+import "../styles/pages/LandingPage.css";
 
 function ProjectCard({ icon: Icon, title, onClick, description }) {
   return (
