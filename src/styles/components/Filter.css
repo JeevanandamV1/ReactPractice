@@ -1,0 +1,134 @@
+.filters-wrapper {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.filter-section {
+  padding: 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.filter-section:last-child {
+  border-bottom: none;
+}
+
+.filter-section-title {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.filter-container {
+  margin-bottom: 8px;
+}
+
+.filter-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 8px;
+}
+
+.filter-value {
+  padding: 4px 8px;
+  background: #f3f4f6;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #666;
+}
+
+.filter-range {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #666;
+  margin-top: 8px;
+}
+
+.filter-input {
+  width: 100%;
+  height: 6px;
+  -webkit-appearance: none;
+  background: #e5e7eb;
+  border-radius: 3px;
+  outline: none;
+}
+
+.filter-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #3b82f6;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.brand-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.brand-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+.brand-checkbox input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.brand-name {
+  flex-grow: 1;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.brand-count {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+/* Scrollbar styling */
+.brand-filters::-webkit-scrollbar {
+  width: 4px;
+}
+
+.brand-filters::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.brand-filters::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 2px;
+}
+
+.brand-filters::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+.add-to-cart-button {
+  font-family: "Roboto Mono", serif;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.add-to-cart-button:hover {
+  background-color: #1d4ed8;
+}
