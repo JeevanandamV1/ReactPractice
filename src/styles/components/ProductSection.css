@@ -1,11 +1,8 @@
-.product-grid-container {
-  padding: 20px;
-}
-
 .product-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   border: 1px solid #e2e2e2;
+  border-radius: 8px;
 }
 
 .product-cell {

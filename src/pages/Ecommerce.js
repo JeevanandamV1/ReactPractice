@@ -91,6 +91,10 @@ const productsData = [
 function Ecommerce() {
   const [filteredProducts, setFilteredProducts] = useState(productsData);
 
+  const handleFilterRemove = () => {
+    setFilteredProducts([...productsData]);
+  };
+
   const handleFilterChange = (filters) => {
     const { price, brands } = filters;
 
@@ -104,7 +108,9 @@ function Ecommerce() {
   };
 
   return (
-    <ContextAPI.Provider value={{ filteredProducts, handleFilterChange }}>
+    <ContextAPI.Provider
+      value={{ filteredProducts, handleFilterChange, handleFilterRemove }}
+    >
       <div className="page-container">
         <aside className="filter-sidebar">
           <Filter />
