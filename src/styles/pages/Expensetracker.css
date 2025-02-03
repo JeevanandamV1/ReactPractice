@@ -1,0 +1,155 @@
+.container {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  margin: 5rem auto;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.background-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.button {
+  font-family: "Roboto Mono", sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background-color: rgb(180, 92, 255);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s;
+  margin-top: 20rem;
+}
+
+.button:hover {
+  background-color: #2563eb;
+}
+
+.plus-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Grid container */
+
+.recent-container {
+  height: 100vw;
+  padding: 2rem;
+}
+
+.expenses-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .expenses-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Expense card */
+.expense-card {
+  background-color: white;
+  width: auto;
+  padding: 1rem;
+  border: 1px solid #9ea0a3;
+  border-radius: 8px;
+  transition: box-shadow 0.2s ease-in-out;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.expense-card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Expense header */
+.expense-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.expense-title {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.expense-amount {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  color: #16a34a; /* Green */
+}
+
+/* Expense details */
+.expense-details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.expense-date,
+.expense-category {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  margin-right: 0.25rem;
+}
+
+.edit-button {
+  font-family: "Roboto Mono", sans-serif;
+  background-color: #ff735c; /* Primary color */
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.no-expense {
+  height: 20vh;
+  padding: 5rem;
+  text-align: center;
+  align-items: center;
+  border: 1px solid #9ea0a3;
+  border-radius: 8px;
+  margin: 1rem auto;
+  width: 90vw;
+}
