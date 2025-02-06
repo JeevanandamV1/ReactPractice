@@ -2,14 +2,14 @@ import React, { useContext } from "react";
 import { multiStepContext } from "../pages/MultiStepForm";
 
 export default function BillingAddressStepperForm() {
-  const { formData, handleChange } = useContext(multiStepContext);
+  const { hookFormData, handleChange } = useContext(multiStepContext);
 
   return (
     <div>
       <h2>Enter Your Billing Address</h2>
       <form>
         <input
-          value={formData.address}
+          value={hookFormData.address}
           name="address"
           type="text"
           placeholder="Enter Address line 1"
@@ -17,21 +17,21 @@ export default function BillingAddressStepperForm() {
           required
         />
         <input
-          value={formData.address2}
+          value={hookFormData.address2}
           name="address2"
           type="text"
           placeholder="Enter Address line 2"
           onChange={handleChange}
         />
         <input
-          value={formData.city}
+          value={hookFormData.city}
           name="city"
           type="text"
           placeholder="Enter City"
           onChange={handleChange}
         />
         <input
-          value={formData.street}
+          value={hookFormData.street}
           name="street"
           type="text"
           placeholder="Enter Street"
@@ -40,7 +40,7 @@ export default function BillingAddressStepperForm() {
         />
         <div>
           <input
-            value={formData.state}
+            value={hookFormData.state}
             name="state"
             type="text"
             placeholder="Enter State"
@@ -48,7 +48,7 @@ export default function BillingAddressStepperForm() {
             required
           />
           <input
-            value={formData.pincode}
+            value={hookFormData.pincode}
             name="pincode"
             type="text"
             placeholder="Enter PinCode"

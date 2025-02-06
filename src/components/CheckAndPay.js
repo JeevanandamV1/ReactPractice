@@ -1,17 +1,18 @@
 import React, { useContext } from "react";
 import { multiStepContext } from "../pages/MultiStepForm";
 export default function CheckAndPay() {
-  const { formData, cardformdata, isopen, otp, handleOtp, setotp, isVerified } =
+  const { hookFormData, isopen, otp, handleOtp, setotp, isVerified } =
     useContext(multiStepContext);
   return (
     <div>
       <h2>Check Your details</h2>
       <h2>Address</h2>
       <p>
-        {formData.address},{formData.city}, {formData.state}-{formData.pincode}
+        {hookFormData.address},{hookFormData.city}, {hookFormData.state}-
+        {hookFormData.pincode}
       </p>
       <h2>card Details</h2>
-      <p>{cardformdata.cardName}</p>
+      <p>{hookFormData.cardName}</p>
       <button onClick={handleOtp}>
         {isVerified ? (isopen ? "Verify OTP" : "Get OTP") : "Verfied"}
       </button>
