@@ -2,6 +2,7 @@ import React, { createContext, useState } from "react";
 import BillingAddressStepperForm from "../components/BillingAddressStepperForm";
 import CardStepper from "../components/CardStepper";
 import CheckAndPay from "../components/CheckAndPay";
+import useFormHook from "../CustomHooks/useFormHook";
 import "../styles/pages/MultiStepForm.css";
 
 export const multiStepContext = createContext();
@@ -11,47 +12,28 @@ function MultiStepForm() {
   const [isopen, setisopen] = useState(false);
   const [otp, setotp] = useState();
   const [isVerified, setisVerified] = useState(true);
-  const [formData, setFormData] = useState({
+  const { hookFormData, handleChange } = useFormHook({
     address: "",
     address2: "",
     city: "",
     street: "",
     state: "",
     pincode: "",
-  });
-  const [cardformdata, setcardformdata] = useState({
     cardName: "",
     cardNumber: "",
     cardCVV: "",
   });
 
-  //  handle change
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-    console.log(setFormData);
-  };
-
-  // handle card change
-  function handleSecondStepperFormChange(e) {
-    const { name, value } = e.target;
-    setcardformdata({ ...cardformdata, [name]: value });
-  }
-
   // handle next step
   function handleNextStep() {
     setNextStep((prev) => prev + 1);
     if (nextStep === 1) {
-      console.log(formData);
+      console.log(hookFormData);
     }
 
     if (nextStep === 2) {
       const lastData = {
-        ...formData,
-        ...cardformdata,
+        ...hookFormData,
       };
       console.log(lastData);
     }
@@ -60,15 +42,6 @@ function MultiStepForm() {
   // handle previous step
   function handlePrevStep() {
     setNextStep((prev) => prev - 1);
-  }
-
-  function handleCardDetailsSubmit(e) {
-    console.log("dfff");
-  }
-
-  // handle submit
-  function handleSubmit(e) {
-    e.preventDefault();
   }
 
   // handle OTP
@@ -81,7 +54,7 @@ function MultiStepForm() {
     if (otp) {
       setisVerified(false);
       setotp("");
-      const checkPaymentData = { ...formData, ...cardformdata, isVerified };
+      const checkPaymentData = { ...hookFormData, isVerified };
       console.log(checkPaymentData);
     }
   }
@@ -95,25 +68,20 @@ function MultiStepForm() {
     }
   }
 
+  const contextValues = {
+    hookFormData,
+    handleChange,
+    handleOtp,
+    isopen,
+    setotp,
+    otp,
+    handlePlaceOrder,
+    setisVerified,
+    isVerified,
+  };
+
   return (
-    <multiStepContext.Provider
-      value={{
-        handleSubmit,
-        formData,
-        handleChange,
-        handleCardDetailsSubmit,
-        setcardformdata,
-        cardformdata,
-        handleSecondStepperFormChange,
-        handleOtp,
-        isopen,
-        setotp,
-        otp,
-        handlePlaceOrder,
-        setisVerified,
-        isVerified,
-      }}
-    >
+    <multiStepContext.Provider value={{ ...contextValues }}>
       <div className="Stepper-Container">
         <div className="Stepper-Content">
           {nextStep === 1 && <BillingAddressStepperForm />}
